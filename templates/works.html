@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Works | Sketchbook{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="section-head">
+        <p class="eyebrow">Studio Projects</p>
+        <h2>Text Sketch</h2>
+    </div>
+
+    <div class="work-grid single-work">
+        <div class="work-card">
+            <div class="work-top">
+                <h3>Text Sketch</h3>
+                <span>✎</span>
+            </div>
+
+            <form method="POST" class="stack-form">
+                <label for="inputString">Write your idea</label>
+                <input type="text" id="inputString" name="inputString" placeholder="Type here..." class="game-input">
+                <button type="submit" class="btn btn-primary">Transform</button>
+            </form>
+
+            {% if result is not none %}
+                <div class="result-box">
+                    <strong>Result:</strong> {{ result }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}

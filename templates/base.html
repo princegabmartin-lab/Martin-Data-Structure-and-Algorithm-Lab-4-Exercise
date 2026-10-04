@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Sketchbook{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <a href="{{ url_for('index') }}" class="brand">
+                <span class="brand-icon">✎</span>
+                SKETCH QUEST
+            </a>
+
+            <div class="nav-links">
+                <a href="{{ url_for('index') }}">Home</a>
+                <a href="{{ url_for('profile') }}">Profile</a>
+                <a href="{{ url_for('works') }}">Works</a>
+                <a href="{{ url_for('works') }}" class="nav-btn">Text Sketch</a>
+                <a href="{{ url_for('acircle') }}">Circle</a>
+                <a href="{{ url_for('atriangle') }}">Triangle</a>
+                <a href="{{ url_for('linked_list') }}">Notes</a>
+                <a href="{{ url_for('contact') }}">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container page-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 Sketch Quest Lab Project</p>
+    </footer>
+</body>
+</html>

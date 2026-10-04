@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Triangle Study | Sketchbook{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="calc-card">
+        <p class="eyebrow">Mini Exercise</p>
+        <h1>Triangle Study</h1>
+        <p class="formula">Formula: A = 1/2 × base × height</p>
+
+        <form method="POST" class="stack-form">
+            <label for="base">Base</label>
+            <input type="number" step="any" id="base" name="base" value="{{ base }}" placeholder="Enter base" class="game-input">
+
+            <label for="height">Height</label>
+            <input type="number" step="any" id="height" name="height" value="{{ height }}" placeholder="Enter height" class="game-input">
+
+            <button type="submit" class="btn btn-primary">Calculate</button>
+        </form>
+
+        {% if result is not none %}
+            <div class="result-box">
+                <strong>Area:</strong> {{ result }}
+            </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

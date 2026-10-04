@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Artist Profile | Sketchbook{% endblock %}
+
+{% block content %}
+<section class="profile-wrap">
+    <div class="profile-header">
+        <div class="profile-avatar">
+            <img src="{{ url_for('static', filename='profile.png') }}" alt="Profile Picture" class="profile-img">
+        </div>
+
+        <div class="profile-info">
+            <p class="eyebrow">Artist Profile</p>
+            <h1>{{ profile.name }}</h1>
+            <p class="subtitle">{{ profile.title }}</p>
+            <p class="motto">"Bahala na si Batman"</p>
+        </div>
+    </div>
+
+    <div class="profile-grid">
+        <div class="card">
+            <h3>About Me</h3>
+            <p>{{ profile.about }}</p>
+        </div>
+
+        <div class="card">
+            <h3>Education</h3>
+            <p>{{ profile.education }}</p>
+        </div>
+
+        <div class="card">
+            <h3>Skills</h3>
+            <ul class="tag-list">
+                {% for skill in profile.skills %}
+                    <li>{{ skill }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Interests</h3>
+            <ul class="simple-list">
+                {% for item in profile.interests %}
+                    <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</section>
+{% endblock %}

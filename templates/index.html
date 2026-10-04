@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}Art Studio | Sketchbook{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-copy">
+        <p class="eyebrow">Sketchbook Studio</p>
+        <h1>Where ideas become art and sketches come alive.</h1>
+        <p class="lead">
+            I create visual experiences that blend imagination, color, and technology into meaningful digital stories.
+        </p>
+
+        <div class="hero-actions">
+            <a href="{{ url_for('profile') }}" class="btn btn-primary">View Portfolio</a>
+            <a href="{{ url_for('works') }}" class="btn btn-secondary">Open Gallery</a>
+        </div>
+
+        <div class="stats">
+            <div class="stat-box">
+                <span class="stat-number">12+</span>
+                <span class="stat-label">Sketches</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number">∞</span>
+                <span class="stat-label">Ideas</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number">1</span>
+                <span class="stat-label">Creative Soul</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="hero-card">
+        <div class="avatar-wrap">
+            <img src="{{ url_for('static', filename='profile.png') }}" alt="Profile Picture" class="avatar-img">
+        </div>
+        <h3>{{ profile.name }}</h3>
+        <p>{{ profile.title }}</p>
+
+        <ul class="hero-list">
+            <li>✎ Illustration and concept art</li>
+            <li>🎨 Creative sketching</li>
+            <li>💻 Digital design and code</li>
+            <li>✨ Color and imagination</li>
+        </ul>
+    </div>
+</section>
+
+<section class="section">
+    <div class="section-head">
+        <p class="eyebrow">Creative Focus</p>
+        <h2>My Artistic Practice</h2>
+    </div>
+
+    <div class="card-grid">
+        <div class="card">
+            <div class="card-icon">🎨</div>
+            <h3>Illustration</h3>
+            <p>Turning ideas into expressive visuals with character, emotion, and movement.</p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">✏️</div>
+            <h3>Sketching</h3>
+            <p>Exploring lines, textures, and compositions through hand-drawn studies.</p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">💡</div>
+            <h3>Creative Coding</h3>
+            <p>Blending design thinking with digital tools to craft immersive visual experiences.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}
