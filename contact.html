@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Contact | Sketchbook{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="contact-box">
+        <p class="eyebrow">Contact</p>
+        <h1>Let's Connect</h1>
+
+        <div class="contact-details">
+            <p><strong>Name:</strong> {{ profile.name }}</p>
+            <p><strong>Email:</strong> {{ profile.email }}</p>
+            <p><strong>Phone:</strong> {{ profile.phone }}</p>
+            <p><strong>Location:</strong> {{ profile.location }}</p>
+            <p><strong>GitHub:</strong> {{ profile.github }}</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

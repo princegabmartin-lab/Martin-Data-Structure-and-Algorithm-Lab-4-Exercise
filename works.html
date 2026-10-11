@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+
+{% block title %}Works | Sketchbook{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="section-head">
+        <p class="eyebrow">Studio Projects</p>
+        <h2>Creative & Technical Works</h2>
+    </div>
+
+    <div class="work-grid">
+        <!-- Text Sketch -->
+        <div class="work-card">
+            <div class="work-top">
+                <h3>Text Sketch</h3>
+                <span>✎</span>
+            </div>
+
+            <form method="POST" action="{{ url_for('works') }}" class="stack-form">
+                <label for="inputString">Write your idea</label>
+                <input type="text" id="inputString" name="inputString" placeholder="Type here..." class="game-input">
+                <button type="submit" class="btn btn-primary">Transform</button>
+            </form>
+
+            {% if result is not none and request.endpoint == 'works' %}
+                <div class="result-box">
+                    <strong>Result:</strong> {{ result }}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Circle Study -->
+        <div class="work-card">
+            <div class="work-top">
+                <h3>Circle Study</h3>
+                <span>📐</span>
+            </div>
+
+            <form method="POST" action="{{ url_for('acircle') }}" class="stack-form">
+                <label for="radius">Radius</label>
+                <input type="number" step="any" id="radius" name="radius" placeholder="Enter radius" class="game-input">
+                <button type="submit" class="btn btn-primary">Calculate</button>
+            </form>
+
+            {% if result is not none and request.endpoint == 'acircle' %}
+                <div class="result-box">
+                    <strong>Area:</strong> {{ result }}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Triangle Study -->
+        <div class="work-card">
+            <div class="work-top">
+                <h3>Triangle Study</h3>
+                <span>📐</span>
+            </div>
+
+            <form method="POST" action="{{ url_for('atriangle') }}" class="stack-form">
+                <label for="base">Base</label>
+                <input type="number" step="any" id="base" name="base" placeholder="Enter base" class="game-input">
+                <label for="height">Height</label>
+                <input type="number" step="any" id="height" name="height" placeholder="Enter height" class="game-input">
+                <button type="submit" class="btn btn-primary">Calculate</button>
+            </form>
+
+            {% if result is not none and request.endpoint == 'atriangle' %}
+                <div class="result-box">
+                    <strong>Area:</strong> {{ result }}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Infix to Postfix -->
+        <div class="work-card">
+            <div class="work-top">
+                <h3>Infix to Postfix</h3>
+                <span>🔄</span>
+            </div>
+
+            <form method="POST" action="{{ url_for('infix_postfix') }}" class="stack-form">
+                <label for="infix">Enter Infix Expression</label>
+                <input type="text" id="infix" name="infix" placeholder="e.g., a+b*c" class="game-input">
+                <button type="submit" class="btn btn-primary">Convert</button>
+            </form>
+
+            {% if result is not none and request.endpoint == 'infix_postfix' %}
+                <div class="result-box">
+                    <strong>Postfix:</strong> {{ result }}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Sketchpad Notes -->
+        <div class="work-card wide-card">
+            <div class="work-top">
+                <h3>Sketchpad Notes</h3>
+                <span>📝</span>
+            </div>
+
+            <div class="roster-controls">
+                <form method="POST" action="{{ url_for('linked_list') }}" class="inline-form">
+                    <input type="hidden" name="action" value="add">
+                    <input type="text" name="value" placeholder="Add idea" class="game-input small-input">
+                    <button type="submit" class="btn btn-primary small-btn">Add</button>
+                </form>
+
+                <form method="POST" action="{{ url_for('linked_list') }}" class="inline-form">
+                    <input type="hidden" name="action" value="delete">
+                    <input type="text" name="value" placeholder="Remove idea" class="game-input small-input">
+                    <button type="submit" class="btn btn-secondary small-btn">Delete</button>
+                </form>
+
+                <form method="POST" action="{{ url_for('linked_list') }}" class="inline-form">
+                    <input type="hidden" name="action" value="clear">
+                    <button type="submit" class="btn btn-primary small-btn">Clear</button>
+                </form>
+            </div>
+
+            <a href="{{ url_for('linked_list') }}" class="btn btn-secondary" style="margin-top: 0.8rem;">Open Full Sketchpad</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

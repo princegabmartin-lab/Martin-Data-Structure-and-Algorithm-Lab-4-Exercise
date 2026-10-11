@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Circle Study | Sketchbook{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="calc-card">
+        <p class="eyebrow">Mini Exercise</p>
+        <h1>Circle Study</h1>
+        <p class="formula">Formula: A = πr²</p>
+
+        <form method="POST" class="stack-form">
+            <label for="radius">Radius</label>
+            <input type="number" step="any" id="radius" name="radius" value="{{ radius }}" placeholder="Enter radius" class="game-input">
+
+            <button type="submit" class="btn btn-primary">Calculate</button>
+        </form>
+
+        {% if result is not none %}
+            <div class="result-box">
+                <strong>Area:</strong> {{ result }}
+            </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}
