@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Queue & Dequeue | Sketchbook{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="section-head">
+        <p class="eyebrow">Data Structure</p>
+        <h2>Queue & Dequeue</h2>
+    </div>
+
+    <div class="roster-panel">
+        <div class="roster-controls">
+            <form method="POST" class="inline-form">
+                <input type="hidden" name="action" value="enqueue">
+                <input type="text" name="value" placeholder="Add item" class="game-input small-input">
+                <button type="submit" class="btn btn-primary small-btn">Enqueue</button>
+            </form>
+
+            <form method="POST" class="inline-form">
+                <input type="hidden" name="action" value="dequeue">
+                <button type="submit" class="btn btn-secondary small-btn">Dequeue</button>
+            </form>
+
+            <form method="POST" class="inline-form">
+                <input type="hidden" name="action" value="clear">
+                <button type="submit" class="btn btn-primary small-btn">Clear</button>
+            </form>
+        </div>
+
+        {% if message %}
+            <div class="result-box">
+                {{ message }}
+            </div>
+        {% endif %}
+
+        <div class="squad-box">
+            <h3>Current Queue</h3>
+            {% if queue_items %}
+                <ul class="squad-list">
+                    {% for item in queue_items %}
+                        <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="empty-text">Queue is empty.</p>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}

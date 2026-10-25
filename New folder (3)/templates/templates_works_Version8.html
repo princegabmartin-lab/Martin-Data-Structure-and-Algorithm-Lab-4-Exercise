@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+
+{% block title %}Works | Sketchbook{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="section-head">
+        <p class="eyebrow">Creative Studio</p>
+        <h2>Sketch Studies & Tools</h2>
+    </div>
+
+    <!-- Feature Buttons -->
+    <div class="work-tabs">
+        <button class="work-tab-btn active" onclick="showTab(event, 'text-sketch')">Text Sketch</button>
+        <button class="work-tab-btn" onclick="showTab(event, 'circle')">Circle Study</button>
+        <button class="work-tab-btn" onclick="showTab(event, 'triangle')">Triangle Study</button>
+        <button class="work-tab-btn" onclick="showTab(event, 'infix')">Infix to Postfix</button>
+        <button class="work-tab-btn" onclick="showTab(event, 'notes')">Sketchpad Notes</button>
+    </div>
+
+    <!-- Tab Content -->
+    <div class="work-content">
+        <!-- Text Sketch Tab -->
+        <div id="text-sketch" class="work-tab-content active">
+            <div class="work-card">
+                <div class="work-top">
+                    <h3>Text Sketch</h3>
+                    <span>✎</span>
+                </div>
+
+                <form method="POST" class="stack-form">
+                    <input type="hidden" name="action" value="text_sketch">
+                    <label for="inputString">Write your idea</label>
+                    <input type="text" id="inputString" name="inputString" placeholder="Type here..." class="game-input" value="{{ text_input }}">
+                    <button type="submit" class="btn btn-primary">Transform</button>
+                </form>
+
+                {% if text_result is not none %}
+                    <div class="result-box">
+                        <strong>Result:</strong> {{ text_result }}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Circle Study Tab -->
+        <div id="circle" class="work-tab-content">
+            <div class="work-card">
+                <div class="work-top">
+                    <h3>Circle Study</h3>
+                    <span>⭕</span>
+                </div>
+
+                <form method="POST" class="stack-form">
+                    <input type="hidden" name="action" value="circle">
+                    <label for="radius">Radius</label>
+                    <input type="number" step="any" id="radius" name="radius" value="{{ radius }}" placeholder="Enter radius" class="game-input">
+                    <button type="submit" class="btn btn-primary">Calculate</button>
+                </form>
+
+                {% if circle_result is not none %}
+                    <div class="result-box">
+                        <strong>Area:</strong> {{ circle_result }}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Triangle Study Tab -->
+        <div id="triangle" class="work-tab-content">
+            <div class="work-card">
+                <div class="work-top">
+                    <h3>Triangle Study</h3>
+                    <span>△</span>
+                </div>
+
+                <form method="POST" class="stack-form">
+                    <input type="hidden" name="action" value="triangle">
+                    <label for="base">Base</label>
+                    <input type="number" step="any" id="base" name="base" value="{{ base }}" placeholder="Enter base" class="game-input">
+                    <label for="height">Height</label>
+                    <input type="number" step="any" id="height" name="height" value="{{ height }}" placeholder="Enter height" class="game-input">
+                    <button type="submit" class="btn btn-primary">Calculate</button>
+                </form>
+
+                {% if triangle_result is not none %}
+                    <div class="result-box">
+                        <strong>Area:</strong> {{ triangle_result }}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Infix to Postfix Tab -->
+        <div id="infix" class="work-tab-content">
+            <div class="work-card">
+                <div class="work-top">
+                    <h3>Infix to Postfix</h3>
+                    <span>⟿</span>
+                </div>
+
+                <form method="POST" class="stack-form">
+                    <input type="hidden" name="action" value="infix_postfix">
+                    <label for="infix_expr">Expression</label>
+                    <input type="text" id="infix_expr" name="infix_expr" placeholder="e.g., a+b*c" class="game-input" value="{{ infix_input }}">
+                    <button type="submit" class="btn btn-primary">Convert</button>
+                </form>
+
+                {% if postfix_result is not none %}
+                    <div class="result-box">
+                        <strong>Postfix:</strong> {{ postfix_result }}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Sketchpad Notes Tab -->
+        <div id="notes" class="work-tab-content">
+            <div class="work-card">
+                <div class="work-top">
+                    <h3>Sketchpad Notes</h3>
+                    <span>📝</span>
+                </div>
+
+                <p>Track ideas, concepts, and quick notes in a simple creative board.</p>
+
+                <a href="{{ url_for('linked_list') }}" class="btn btn-secondary">Open Sketchpad</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+function showTab(evt, tabName) {
+    // Hide all tabs
+    const contents = document.getElementsByClassName("work-tab-content");
+    for (let i = 0; i < contents.length; i++) {
+        contents[i].classList.remove("active");
+    }
+
+    // Remove active class from all buttons
+    const buttons = document.getElementsByClassName("work-tab-btn");
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].classList.remove("active");
+    }
+
+    // Show current tab and mark button as active
+    document.getElementById(tabName).classList.add("active");
+    evt.currentTarget.classList.add("active");
+}
+</script>
+{% endblock %}

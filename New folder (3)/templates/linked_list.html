@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Sketchpad | Sketchbook{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="section-head">
+        <p class="eyebrow">Idea Board</p>
+        <h2>Sketchpad Notes</h2>
+    </div>
+
+    <div class="roster-panel">
+        <div class="roster-controls">
+            <form method="POST" class="inline-form">
+                <input type="hidden" name="action" value="add">
+                <input type="text" name="value" placeholder="Add idea" class="game-input small-input">
+                <button type="submit" class="btn btn-primary small-btn">Add</button>
+            </form>
+
+            <form method="POST" class="inline-form">
+                <input type="hidden" name="action" value="delete">
+                <input type="text" name="value" placeholder="Remove idea" class="game-input small-input">
+                <button type="submit" class="btn btn-secondary small-btn">Delete</button>
+            </form>
+
+            <form method="POST" class="inline-form">
+                <input type="hidden" name="action" value="clear">
+                <button type="submit" class="btn btn-primary small-btn">Clear</button>
+            </form>
+        </div>
+
+        {% if message %}
+            <div class="result-box">
+                {{ message }}
+            </div>
+        {% endif %}
+
+        <div class="squad-box">
+            <h3>Current Notes</h3>
+            {% if linked_list %}
+                <ul class="squad-list">
+                    {% for item in linked_list %}
+                        <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="empty-text">No notes on the page yet.</p>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}
