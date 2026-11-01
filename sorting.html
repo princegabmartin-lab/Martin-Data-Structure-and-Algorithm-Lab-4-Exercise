@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Sorting | Sketchbook{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="section-head">
+        <p class="eyebrow">Data Structure</p>
+        <h2>Sorting</h2>
+    </div>
+
+    <div class="calc-card">
+        <form method="POST" class="stack-form">
+            <label for="numbers">Enter numbers separated by commas</label>
+            <input type="text" id="numbers" name="numbers" value="{{ numbers }}" placeholder="e.g., 5, 2, 9, 1" class="game-input">
+            <button type="submit" class="btn btn-primary">Sort</button>
+        </form>
+
+        {% if result is not none %}
+            <div class="result-box">
+                <strong>Sorted Result:</strong> {{ result }}
+            </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}
